@@ -1,0 +1,24 @@
+10.12 ___A&A___
+    routes/contacts
+        contact = await reps_contacts.get_contact(..., user)
+    repository/contacts
+        async def <name>(..., db: AsyncSession, user: User)
+    schemas/contact
+        class ContactResponse(BaseModel):
+        ...
+        created_at: datetime | None
+        updated_at: datetime | None
+        user: UserResponse | None
+
+    Чтобы пользователь видел только свои контакты:
+    repository/contacts
+        stmt = select(Contact).filter_by(user=user).offset(offset).limit(limit)  "filter_by(user=user)" все контакты
+        stmt = select(Contact).filter_by(id=contact_id, user=user) контакт по id 
+        дальше по всем  stmt и
+        contact = Contact(**body.model_dump(exclude_unset=True), user=user) создание контакта
+
+11.12 ___A&A___показать все
+    routes/contacts
+        
+    repository/contacts
+        

@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "web-python17m13"
+version = "0.1.0"
+description = ""
+authors = ["hedgyv <hedgy85@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.109.0"
+uvicorn = {extras = ["standard"], version = "^0.26.0"}
+pydantic = {extras = ["email"], version = "^2.5.3"}
+python-multipart = "^0.0.6"
+alembic = "^1.13.1"
+psycopg2-binary = "^2.9.9"
+asyncpg = "^0.29.0"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+libgravatar = "^1.0.4"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+sqlalchemy = "^2.0.25"
+fastapi-mail = "^1.4.1"
+python-dotenv = "^1.0.1"
+redis = "==4.*"
+fastapi-limiter = "^0.1.6"
+cloudinary = "^1.38.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
