@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 #from sqlalchemy.sql.sqltypes import Date
 from datetime import date, datetime
 from sqlalchemy import CheckConstraint

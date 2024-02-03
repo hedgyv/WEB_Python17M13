@@ -39,6 +39,19 @@ conf = ConnectionConfig(
     #__________________2.13.Env_______________________________________________________________________________________|
 
 async def send_email(email: EmailStr, username: str, host: str):
+    """
+    The send_email function sends an email to the user with a link to verify their email address.
+        The function takes in three arguments:
+            -email: the user's email address, which is used as a unique identifier for them.
+            -username: the username of the user, which is displayed in the body of the message.
+            -host: this is used to construct a URL that will be sent in an HTML template.
+    
+    :param email: EmailStr: Ensure that the email is a valid email address
+    :param username: str: Pass the username of the user to be used in the email template
+    :param host: str: Pass the hostname of the server to the template
+    :return: None
+    :doc-author: Trelent
+    """
     try:
         token_verification = auth_service.create_email_token({"sub": email})
         message = MessageSchema(
@@ -55,10 +68,23 @@ async def send_email(email: EmailStr, username: str, host: str):
         
         
 async def send_email_reset_password(email: EmailStr, username: str, host: str): 
+    """
+    The send_email_reset_password function sends an email to the user with a link to reset their password.
+        Args:
+            email (str): The user's email address.
+            username (str): The user's username.
+            host (str): The hostname of the server where this function is being called from.
+    
+    :param email: EmailStr: Validate the email address
+    :param username: str: Pass the username of the user to be reset
+    :param host: str: Pass the hostname of the server to be used in the link
+    :return: Nothing
+    :doc-author: Trelent
+    """
     try: 
         token_verification = auth_service.create_email_token({"sub": email}) 
         message = MessageSchema( 
-            subject="Confirm your email ", 
+            subject="Test ", 
             recipients=[email], 
             template_body={"host": host, "username": username, "token": token_verification}, 
             subtype=MessageType.html 

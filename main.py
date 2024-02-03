@@ -1,4 +1,5 @@
 #3#plan
+import os
 import re
 from typing import Callable
 from fastapi import FastAPI, Depends, HTTPException, Query, Request, status
@@ -7,7 +8,9 @@ from sqlalchemy import text, select
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ipaddress import ip_address #4.13____CORS
+from ipaddress import ip_address
+
+import uvicorn #4.13____CORS
 
 from src.database.db import get_db
 from src.routes import contacts, users
@@ -118,6 +121,9 @@ async def find_contact(
     contacts = result.scalars().all()
 
     return {"contacts": contacts}
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 8000)), log_level="info")
 
 
 
